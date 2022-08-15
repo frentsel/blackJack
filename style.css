@@ -1,14 +1,20 @@
-html,  body {
+html,
+body {
   height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .coloda {
   box-shadow: 6px 8px 10px 1px #000;
   border-radius: 10px;
-  background: radial-gradient(#000 0%, #7B1672 100%);
+  background: radial-gradient(#FFFFE0 0%, #BDB76B 70%);
   width: 80px;
-  height: 120px;
-  border: 2px solid;
+  border: 1px solid black;
   font-size: 30px;
   text-align: center;
   display: flex;
@@ -16,22 +22,32 @@ html,  body {
   justify-content: center;
 }
 
+.coloda.hearts,
+.coloda.diams {
+  color: red;
+}
+
 .score {
-  width: 120px;
   padding: 0 10px;
   height: 30px;
-  border: 2px solid;
+  min-width: 120px;
+  border: 1px solid;
   font-size: 20px;
   text-align: center;
   background: radial-gradient(#FFFFE0 0%, #BDB76B 70%);
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .flex-container {
   height: 100px;
   display: flex;
   flex-direction: row;
+}
+
+.flex-container.hidden .coloda {
+  background-image: radial-gradient(#000 0%, #7B1672 100%);
 }
 
 .flex-containerColumn {
@@ -41,7 +57,6 @@ html,  body {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  /* row-gap: 5px; */
   min-width: 100px;
 }
 
@@ -64,14 +79,19 @@ html,  body {
 .scoreFlexColumn {
   flex-direction: column;
   display: flex;
-
 }
 
-.scoreFlex {height: 35px;display: flex;flex-direction: row;column-gap: 10px;}
+.scoreFlex {
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+}
 
 .pre {
   width: 150px;
-  color: #F0E68C;
+  color: #f0e68c;
   font-size: 20px;
   text-align: right;
   display: flex;
@@ -85,12 +105,26 @@ html,  body {
   align-items: center;
 }
 
-.table {width: 100%;height: 100%;box-shadow: -9px 9px 18px 7px #000 inset;background: radial-gradient(#07540F 0%, #000 100%);display: flex;align-items: center;justify-content: center;flex-direction: column;}
+.table {
+  width: 100%;
+  height: 100%;
+  box-shadow: -9px 9px 18px 7px #000 inset;
+  background: radial-gradient(#07540F 0%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
 
-.button {
-  background: radial-gradient(#FFFFE0 0%, #BDB76B 80%);
+button {
+  background: radial-gradient(#ffffe0 0%, #bdb76b 80%);
   margin: 0 5px;
   width: 100%;
   border: 1px solid black;
   padding: 5px;
+}
+
+#bank.hidden > div > div {
+  display: none;
 }

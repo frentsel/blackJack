@@ -1,72 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-
-<body>
-
-    <!--------------->
-    <div class='table'>
-        <!------карты игрока--------->
-        <div class='flex-container' id='pl'></div><br><br>
-        <!----колода с кнопками ------->
-        <div class='center'>
-
-            <div class='coloda flex-containerColumn' id='coloda'>
-
-                <button onclick='tosovka()' class='button'>тасовать</button><br>
-
-                <button onclick='launchAaa()' class='button' id='btn1'></button><br>
-
-                <button onclick='pasLaunch()' class='button' id='btn2'></button>
-
-            </div>
-
-            <div class='scoreFlexColumn'>
-
-                <div class='scoreFlex'>
-
-                    <div class='pre'>ИГРОК:</div>
-
-                    <div class='score' id='score'></div>
-
-                </div>
-
-                <div class='scoreFlex'>
-
-                    <div class='pre'>РЕЗУЛЬТАТ: </div>
-
-                    <div class='score' id='result'></div>
-
-                </div>
-
-                <div class='scoreFlex'>
-
-                    <div class='pre'>БАНКИР:</div>
-
-                    <div class='score' id='scoreBank'></div>
-
-                </div>
-
-            </div>
-
+  </head>
+  <body>
+    <div class="table">
+      <!------карты игрока--------->
+      <div class="flex-container" id="pl"></div>
+      <!----колода с кнопками ------->
+      <div class="center">
+        <div class="coloda flex-containerColumn" id="coloda">
+          <button onclick="tosovka()">Тасовать</button>
+          <button onclick="launchAaa()">Взять</button>
+          <button onclick="finish()">Пасс</button>
         </div>
-
-        <!---карты банкира ---->
-        <div class='flex-container' id='bank'></div>
-
+        <div class="scoreFlexColumn">
+          <div class="scoreFlex">
+            <div class="pre">Игрок:</div>
+            <div class="score" id="score"></div>
+          </div>
+          <div class="scoreFlex">
+            <div class="pre">Статус:</div>
+            <div class="score" id="status"></div>
+          </div>
+          <div class="scoreFlex">
+            <div class="pre">Банкир:</div>
+            <div class="score" id="scoreBank"></div>
+          </div>
+        </div>
+      </div>
+      <!---карты банкира ---->
+      <div class="flex-container" id="bank"></div>
     </div>
-    <!--------------->
-
-
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

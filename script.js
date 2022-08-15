@@ -1,9 +1,6 @@
-
-
 let score, scoreBank, coloda, card, p;
 let openСards = [];
 
-////////////tosovka///////////////
 function tosovka() {
     document.querySelector('#btn1').innerHTML = 'взять';
     document.querySelector('#btn2').innerHTML = 'пас';
@@ -25,9 +22,6 @@ function tosovka() {
             this.value = value;
         }
     }
-
-    //let сard = new Card("an awesome Suit", "Joker", 100);
-    //console.log(сard);
 
     class Deck {
         constructor() {
@@ -62,12 +56,8 @@ function tosovka() {
     d.createDeck(); //создать колоду
     d.shuffleDeck(); // тосовать
     coloda = d.cards;
-    //console.log(d.cards);
 
 }
-///////////////////////////////
-
-////////////bankir//////////
 
 function bankir() {
 
@@ -75,8 +65,6 @@ function bankir() {
 
     cardBankir = cardBankir.map(elem => elem[1]);
     openСards.push(cardBankir);
-
-    //console.log(openСards);
 
     let divCard = document.querySelector('#bank');
     p = document.createElement('div');
@@ -88,45 +76,26 @@ function bankir() {
 
     scoreBank = scoreBank + cardBankir[2];
     if (scoreBank > 21) {
-
         document.querySelector('#scoreBank').innerHTML = `перебор ${scoreBank}`;
         document.querySelector('#result').innerHTML = 'вы выиграли';
         showСards();
 
     } else if (scoreBank > 14 && scoreBank <= 21) {
-
         document.querySelector('#scoreBank').innerHTML = `пас`; 
-
-    } 
-
-}
-
-///////////////////////
-function launchBankir() {
-
-    if (scoreBank < 15) {
-
-        bankir();
-        launchBankir();
-        // setTimeout(function() {
-
-        // bankir();
-        //  launchBankir();
-
-        //  }, 500);
-
     }
 }
-//////aaa/////
+
+function launchBankir() {
+    if (scoreBank < 15) {
+        bankir();
+        launchBankir();
+    }
+}
 
 function aaa() {
-
     card = Object.entries(coloda[0]);
-    //console.log(card);
-
     card = card.map(elem => elem[1]);
 
-    //console.log(card);
     let divCard = document.querySelector('#pl');
     let p = document.createElement('div');
     p.classList.add("coloda");
@@ -140,7 +109,6 @@ function aaa() {
     if (score <= 21) {
         document.querySelector('#score').innerHTML = score;
     } else {
-
         showСards();
 
         document.querySelector('#score').innerHTML = `перебор ${score}`;
@@ -150,91 +118,52 @@ function aaa() {
     }
 
     if (scoreBank < 15 && score <= 21) {
-
         bankir();
-        //setTimeout(bankir, 500);
-
     }
-
 }
-////////////////
-
-///////launchAaa/////
 
 function launchAaa() {
-
     if (card !== '') {
-
         aaa();
-
     }
-
 }
 
-///////
-
-///////pas/////////////
-
 function pas() {
-
     document.querySelector('#score').innerHTML = `пас ${score}`;
     card = '';
 
     launchBankir();
-
-    //console.log(openСards);
-
     showСards();
 
-    /////////////
-
     function compare() {
-
-
         if (score > scoreBank || scoreBank > 21) {
-
             document.querySelector('#result').innerHTML = 'вы выиграли';
             p.style.background = 'radial-gradient(#FFFFE0 0%, #BDB76B 70%)';
         } else if (score < scoreBank) {
-
             document.querySelector('#result').innerHTML = 'вы проиграли';
             p.style.background = 'radial-gradient(#FFFFE0 0%, #BDB76B 70%)';
         } else {
-
             document.querySelector('#result').innerHTML = 'ничья';
             p.style.background = 'radial-gradient(#FFFFE0 0%, #BDB76B 70%)';
         }
-
     }
 
     compare();
-
-    //setTimeout(compare, 2500);
 }
 
-///////pasLaunch/////
 function pasLaunch() {
-
     if (score <= 21 && score !== 0) {
-
-        //pas();
         setTimeout(pas, 500);
-
     }
-
 }
 
 function showСards() {
-
     let divCard = document.querySelector('#bank');
     divCard.innerHTML = '';
 
     if (scoreBank > 21) {
-
         document.querySelector('#scoreBank').innerHTML = `перебор ${scoreBank}`;
-
     } else {
-
         document.querySelector('#scoreBank').innerHTML = scoreBank;
     }
 
@@ -243,10 +172,7 @@ function showСards() {
         let p = document.createElement('div');
         p.classList.add("coloda");
         p.style.background = 'radial-gradient(#FFFFE0 0%, #BDB76B 70%)';
-        p.innerHTML = `<div>${elem[0]}<br>${elem[1]}</div>`;
+        p.innerHTML = `<div>${elem[0]}${elem[1]}</div>`;
         divCard.append(p);
     });
-
-
 }
-

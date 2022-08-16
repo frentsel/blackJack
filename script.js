@@ -6,6 +6,40 @@ let openCards = [];
 let bankCards = [];
 let gameInProgress = true;
 
+const Card = function(suit, rank, value) {
+	return { suit, rank, value };
+}
+
+class Deck {
+	constructor() {
+		this.cards = [];
+	}
+
+	createDeck() {
+		let suits = ['clubs', 'diams', 'hearts', 'spades'];
+		let ranks = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+		let values = [6, 7, 8, 9, 10, 2, 3, 4, 11];
+
+		suits.forEach((suit) => {
+			ranks.forEach((rank, n) => {
+				this.cards.push(new Card(suit, rank, values[n]));
+			});
+		});
+	}
+
+	shuffleDeck() {
+		const cards = [];
+		const count = this.cards.length;
+
+		for (let i = 0; i < count; i++) {
+			const index = Math.floor(Math.random() * this.cards.length);
+			cards.push(this.cards[index]);
+			this.cards.splice(index, 1);
+		}
+		this.cards = cards;
+	}
+}
+
 const tosovka = () => {
 	openCards = [];
 	bankCards = [];
@@ -14,43 +48,6 @@ const tosovka = () => {
 	gameInProgress = true;
 	coloda = [];
 	$('#status').innerHTML = 'Идёт игра';
-
-	class Card {
-		constructor(suit, rank, value) {
-			this.suit = suit;
-			this.rank = rank;
-			this.value = value;
-		}
-	}
-
-	class Deck {
-		constructor() {
-			this.cards = [];
-		}
-
-		createDeck() {
-			let suits = ['clubs', 'diams', 'hearts', 'spades'];
-			let ranks = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-			let values = [6, 7, 8, 9, 10, 2, 3, 4, 11];
-
-			for (let i = 0; i < suits.length; i++) {
-				for (let j = 0; j < ranks.length; j++) {
-					this.cards.push(new Card(suits[i], ranks[j], values[j]));
-				}
-			}
-		}
-
-		shuffleDeck() {
-			let location1, location2, tmp;
-			for (let i = 0; i < 1000; i++) {
-				location1 = Math.floor((Math.random() * this.cards.length));
-				location2 = Math.floor((Math.random() * this.cards.length));
-				tmp = this.cards[location1];
-				this.cards[location1] = this.cards[location2];
-				this.cards[location2] = tmp;
-			}
-		}
-	}
 
 	const d = new Deck();
 	d.createDeck(); //создать колоду

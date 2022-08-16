@@ -58,6 +58,7 @@ body {
   justify-content: space-between;
   padding: 10px;
   min-width: 100px;
+  background: radial-gradient(#000 0%, #7B1672 100%);
 }
 
 .res {
